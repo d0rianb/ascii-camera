@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto";
+    font-weight: 400;
+    font-size: 2vh;
+}
+
+
+main {
+
+    flex-flow: column nowrap;
+    margin: .5em;
+
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.ascii-container {
+    font-family: monospace;
+    line-height: calc(9/16);
+    white-space: nowrap;
+}
