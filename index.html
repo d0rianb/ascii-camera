@@ -12,12 +12,24 @@
 <body>
     <main>
         <div class="row">
+            <div class="block-video">
+                <span>Black and white - resolution <span class="res-label">1/4 </span>:</span>
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="block-video">
+                <span>Video stream : </span>
+                <video id="video" autoplay muted></video>
+            </div>
             <canvas id="hiddenCanvas" style="display: none;"></canvas>
-            <canvas id="canvas"></canvas>
-            <video id="video" autoplay muted></video>
+
         </div>
-        <!-- <textarea name="ascii-container" resizable="false"></textarea> -->
-        <p class='ascii-container'></p>
+        <div class="block-video">
+            <span>Ascii video : </span>
+            <p class='ascii-container'></p>
+        </div>
+        <div class="slider-container">
+            Résolution : <input type="range" min="2" max="100" value="4" class="slider">
+        </div>
     </main>
     <script src="src/main.js" charset="utf-8"></script>
 

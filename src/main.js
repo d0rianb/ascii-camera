@@ -2,6 +2,7 @@ const canvas = document.querySelector('#canvas')
 const hiddenCanvas = document.querySelector('#canvas')
 const video = document.querySelector('#video')
 const container = document.querySelector('.ascii-container')
+const slider = document.querySelector('.slider')
 
 const ctx = canvas.getContext('2d')
 const hiddenCtx = hiddenCanvas.getContext('2d')
@@ -10,7 +11,7 @@ const dpr = window.devicePixelRatio
 const scaleFactor = 0.75
 const scale = scaleFactor / dpr
 
-let gridFactor = 4
+let gridFactor = 2
 
 const char = ['.', ',', '`', '-', '_', ':', ';', '|', '/', '^', '+', '*', '=', '%', '$', '0'].reverse()
 
@@ -30,11 +31,19 @@ window.onload = () => {
                 [hiddenCanvas.width, hiddenCanvas.height] = [canvas.width, canvas.height];
                 [video.width, video.height] = [canvas.width, canvas.height]
                 container.style.fontSize = `${gridFactor*2}px`
+                document.querySelector('.res-label').innerText = `1/${gridFactor}`
             })
             .catch(err => console.error(err))
     }
     update()
 }
+
+slider.addEventListener('change', () => {
+    gridFactor = parseInt(slider.value)
+    document.querySelector('.res-label').innerText = `1/${gridFactor}`
+    container.style.fontSize = `${gridFactor*2}px`
+
+})
 
 
 ImageData.prototype.process = function() {
@@ -62,7 +71,7 @@ ImageData.prototype.process = function() {
     let range = Math.max(...pixelList) - min
     let realRange = range === 0 ? 255 : range
     pixelList.forEach((pixel, i) => {
-        if (i !== 0 && i % (canvas.width / gridFactor) === 0) {
+        if (i !== 0 && i % parseInt((canvas.width / gridFactor)) === 0) {
             imageText += '<br>'
         }
         const correspondingIndex = Math.floor((pixel - min) * (char.length - 1) / realRange)

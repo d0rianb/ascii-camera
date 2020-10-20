@@ -22,10 +22,25 @@ main {
 .row {
     display: flex;
     flex-flow: row nowrap;
+    margin-bottom: 1em;
+}
+
+.row>* {
+    margin: 0.25em;
 }
 
 .ascii-container {
     font-family: monospace;
     line-height: calc(9/16);
     white-space: nowrap;
+}
+
+.block-video span {
+    font-size: 1.1em;
+    width: 100%;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
 }
